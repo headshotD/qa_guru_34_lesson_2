@@ -7,14 +7,14 @@ import java.io.File;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.files.DownloadActions.click;
 
 public class HomeWork {
 
     @BeforeAll
-    static void beforeAll() {
+    static void configurationBrowser() {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
-        //Configuration.holdBrowserOpen = true;
     }
 
     @Test
@@ -31,16 +31,15 @@ public class HomeWork {
         $(".react-datepicker__day--028:not(.react-datepicker__day--outside-month)").click();
         $("#subjectsInput").setValue("English").pressEnter();
         $("#subjectsInput").setValue("Arts").pressEnter();
-        $(byText("Reading")).click();
-        $(byText("Music")).click();
-        $(".form-control-file").uploadFile(new File("src\\test\\java\\eda.tiff"));
+        $("#hobbies-checkbox-2").parent().$(byText("Reading")).click();
+        $("#hobbies-checkbox-3").parent().$(byText("Music")).click();
+        $(".form-control-file").uploadFromClasspath("eda.tiff");
         $("#currentAddress").setValue("My current address");
         $("#state").click();
-        $(byText("Haryana")).click();
+        $("#react-select-3-option-2").click();
         $("#city").click();
-        $(byText("Panipat")).click();
+        $("#react-select-4-option-1").click();
         $("#submit").click();
-
 
         $x("//td[text()='Oleg Namozov']").shouldHave(text("Oleg Namozov"));
         $x("//td[text()='Oleg@mail.ru']").shouldHave(text("Oleg@mail.ru"));
@@ -52,8 +51,5 @@ public class HomeWork {
         $x("//td[text()='eda.tiff']").shouldHave(text("eda.tiff"));
         $x("//td[text()='My current address']").shouldHave(text("My current address"));
         $x("//td[text()='Haryana Panipat']").shouldHave(text("Haryana Panipat"));
-
-        //$("#closeLargeModal").pressEnter();
-
     }
 }
