@@ -26,9 +26,9 @@ public class HomeWork {
         $(byText("Other")).click();
         $("#userNumber").setValue("1234567890");
         $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").selectOption("March");
-        $(".react-datepicker__year-select").selectOption("2024");
-        $(".react-datepicker__day--028:not(.react-datepicker__day--outside-month)").click();
+        $x("//*[@class='react-datepicker__year-select']").selectOption("2024");
+        $x("//*[@class='react-datepicker__month-select']").selectOption("March");
+        $x("//*[@class='react-datepicker__day react-datepicker__day--028']").click();
         $("#subjectsInput").setValue("English").pressEnter();
         $("#subjectsInput").setValue("Arts").pressEnter();
         $("#hobbies-checkbox-2").parent().$(byText("Reading")).click();
