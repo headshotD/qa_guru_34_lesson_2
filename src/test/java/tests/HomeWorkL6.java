@@ -3,26 +3,20 @@ package tests;
 import org.junit.jupiter.api.Test;
 import pages.RegistationPage;
 
-import static pages.RegistationPage.setFirstName;
-import static pages.RegistationPage.setLastName;
 
 public class HomeWorkL6 extends TestBase {
 
     @Test
     void textBoxHomeWork() {
-        RegistationPage.openPage();
-        setFirstName("Alex");
-        setLastName("Egorov");
+        RegistationPage.openPage()
+                .setFirstName("Oleg")
+                .setLastName("Namozov")
+                .setUserNumber("1234567890")
+                .setEmailInput("oleg@mail.ru")
+                .setGender("Other")
+                .setDateOfBirth("20", "April","2020")
+                .setSubjects("English");
 
-//        //$("#firstName").setValue("Oleg");
-//        //$("#lastName").setValue("Namozov");
-//        $("#userEmail").setValue("Oleg@mail.ru");
-//        $(byText("Other")).click();
-//        $("#userNumber").setValue("1234567890");
-//        $("#dateOfBirthInput").click();
-//        $x("//*[@class='react-datepicker__year-select']").selectOption("2024");
-//        $x("//*[@class='react-datepicker__month-select']").selectOption("March");
-//        $x("//*[@class='react-datepicker__day react-datepicker__day--028']").click();
 //        $("#subjectsInput").setValue("English").pressEnter();
 //        $("#subjectsInput").setValue("Arts").pressEnter();
 //        $("#hobbies-checkbox-2").parent().$(byText("Reading")).click();
