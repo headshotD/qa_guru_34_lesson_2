@@ -4,6 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import pages.components.CalendarComponent;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -23,7 +24,17 @@ public class RegistationPage {
             genderWrapper = $("#genterWrapper"),
             userNumber = $("#userNumber"),
             calendarInput = $("#dateOfBirthInput"),
-            subjectsInput = $("#subjectsInput");
+            subjectsInput = $("#subjectsInput"),
+            hobbiesCheckBoxReading = $("#hobbies-checkbox-2"),
+            hobbiesCheckBoxMusic = $("#hobbies-checkbox-3"),
+            uploadFile = $(".form-control-file"),
+            currentAddress = $("#currentAddress"),
+            stateDropDown = $("#state"),
+            state = $("#react-select-3-option-2"),
+            cityDropDown = $("#city"),
+            city = $("#react-select-4-option-1"),
+            submit = $("#submit"),
+            results = $(".modal-body");
 
 
     @Step("Set {{value}} to FirstName")
@@ -65,9 +76,68 @@ public class RegistationPage {
     }
 
     @Step("Set {{value}} to Subjects")
-    public RegistationPage setSubjects(String value) {
+    public RegistationPage setSubjects(String value, String value2) {
         subjectsInput.setValue(value).pressEnter();
+        subjectsInput.setValue(value2).pressEnter();
         return this;
     }
-    // Добавить остальные поля. Сначала Селенид элемент, потом метод, и потом в основной класс
+
+    @Step("Set {{value}} to hobbies")
+    public RegistationPage setHobbies(String value, String value2) {
+        hobbiesCheckBoxReading.parent().$(byText(value)).click();
+        hobbiesCheckBoxMusic.parent().$(byText(value2)).click();
+        return this;
+    }
+
+    @Step("Upload file {{value}}")
+    public RegistationPage uploadFiles(String value) {
+        uploadFile.uploadFromClasspath(value);
+        return this;
+    }
+
+    @Step("Set {{value}} to currentAddress")
+    public RegistationPage setCurrentAddress(String value) {
+        currentAddress.setValue(value);
+        return this;
+    }
+
+    public RegistationPage clickStateDropDown() {
+        stateDropDown.click();
+        return this;
+    }
+
+    public RegistationPage setState() {
+        state.click();
+        return this;
+    }
+
+    public RegistationPage clickCityDropDown() {
+        cityDropDown.click();
+        return this;
+    }
+
+    public RegistationPage setCity() {
+        city.click();
+        return this;
+    }
+
+    public RegistationPage clickSubmit() {
+        submit.click();
+        return this;
+    }
+
+    public RegistationPage result(String Student, String Email, String Mobile, String Gender, String
+            DateofBirth, String Subjects, String Hobbies, String Picture, String Address, String StateAndCity) {
+        results.shouldHave(text(Student));
+        results.shouldHave(text(Email));
+        results.shouldHave(text(Mobile));
+        results.shouldHave(text(Gender));
+        results.shouldHave(text(DateofBirth));
+        results.shouldHave(text(Subjects));
+        results.shouldHave(text(Hobbies));
+        results.shouldHave(text(Picture));
+        results.shouldHave(text(Address));
+        results.shouldHave(text(StateAndCity));
+        return this;
+    }
 }
