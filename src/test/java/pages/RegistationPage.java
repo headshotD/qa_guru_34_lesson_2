@@ -37,7 +37,6 @@ public class RegistationPage {
             cityDropDown = $("#city"),
             city = $("#react-select-4-option-1"),
             submit = $("#submit");
-    //results = $(".modal-body");
 
 
     public RegistationPage setFirstName(String value) {
