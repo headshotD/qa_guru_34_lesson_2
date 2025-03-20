@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class TextBoxPage {
-    @Step("Открытие стартовой страницы TextBox")
+   
     public static TextBoxPage openPage() {
         open("https://demoqa.com/text-box");
         return new TextBoxPage();
