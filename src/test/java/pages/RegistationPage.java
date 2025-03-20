@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class RegistationPage {
-    @Step("Открытие стартовой страницы RegistrationPage")
+    
     public static RegistationPage openPage() {
         open("https://demoqa.com/automation-practice-form");
         return new RegistationPage();
@@ -19,7 +19,6 @@ public class RegistationPage {
         executeJavaScript("$('footer').remove()");
         return this;
     }
-    //Выше надо убрать в отдельный метод
 
     CalendarComponent calendarComponent = new CalendarComponent();
     private final SelenideElement firstNameInput = $("#firstName"),
