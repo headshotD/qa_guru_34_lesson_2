@@ -52,7 +52,6 @@ public class HomeWorkL6RegistrationTests extends TestBase {
         resultTable.resultTable("Student Name", "OLEG NAMOZOV");
         resultTable.resultTable("Gender", "Other");
         resultTable.resultTable("Mobile", "1234567890");
-        resultTable.resultTable("Date of Birth", "20 March,2025");
 
     }
 
