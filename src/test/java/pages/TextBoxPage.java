@@ -43,7 +43,7 @@ public class TextBoxPage {
     }
 
     public TextBoxPage clickSubmit() {
-        submit.click();
+        submit.scrollTo().click();
         return this;
     }
 
